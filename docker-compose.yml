@@ -1,0 +1,30 @@
+version: '3.3'
+services: 
+    web:
+        build: 
+            context: ./files
+            dockerfile: Dockerfile
+        container_name: php73
+        depends_on: 
+            - db
+        volumes: 
+            - ./files/public:/var/www/html/
+            - ./files/php.ini:/usr/local/etc/php/php.ini
+        environment:
+            APACHE_RUN_USER: www-data
+            APACHE_RUN_GROUP: www-data
+        ports:
+            - 8000:80
+    db:
+        container_name: mariadb104
+        image: mariadb:10.4
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: bitrix_db
+            MYSQL_USER: michael
+            MYSQL_PASSWORD: password123
+        ports: 
+            - 6033:3306
+        volumes: 
+            - ./db:/var/lib/mysql/

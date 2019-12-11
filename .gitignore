@@ -1,0 +1,15 @@
+/files/public/cache/*
+!/files/public/cache/index.html
+
+/files/public/upload/*
+!/files/public/upload/.htaccess
+
+/files/public/bitrix/*
+!/files/public/.settings.example.php
+
+/db/*
+!/db/dummy.txt
+
+/node_modules
+/vendor
+/_dev
